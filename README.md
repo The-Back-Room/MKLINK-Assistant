@@ -1,5 +1,5 @@
 
-# SymLink-Creator
+# SymLink Creator
 
 Windows CMD script to simplify making SymLinks
 
@@ -23,7 +23,7 @@ This script is provided as-is without any warranty. Use at your own risk.
 <details>
 <summary>View Code</summary>
 
-```batch
+```cmd
 @ECHO OFF
 
 REM ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
