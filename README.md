@@ -8,7 +8,7 @@ Windows CMD script to simplify making SymLinks
 This script is designed to create a symbolic link in Windows. It will prompt for the output path and the input folder to link to.  
 The script will handle errors and provide feedback on the success or failure of the operation.
 
-For more information on symlinks, visit: [docs.microsoft.com/en-us/windows/win32/fileio/symbolic-links](https://docs.microsoft.com/en-us/windows/win32/fileio/symbolic-links)
+For more information on symlinks, visit: https://docs.microsoft.com/en-us/windows/win32/fileio/symbolic-links
 
 ### Notes
 
