@@ -11,6 +11,10 @@ Windows CMD script to simplify making SymLinks
 > 
 > For more information on symlinks, visit: [Symbolic Links - Win32 apps | Microsoft Learn](https://learn.microsoft.com/en-us/windows/win32/fileio/symbolic-links)
 
+**Download**: [ZIP](https://github.com/The-Back-Room/SymLink-Creator/archive/refs/heads/main.zip)
+
+---
+
 <details>
 <summary>View Code</summary>
 
