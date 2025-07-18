@@ -5,11 +5,16 @@ Windows CMD script to simplify making SymLinks
 
 > [!NOTE]
 > This script is intended for educational purposes and to assist users in creating symlinks easily. It is provided as-is without any warranty. Use at your own risk.
-> This script uses the MKLINK command, which requires administrative privileges. If you encounter issues, please check the paths and permissions.
-> 
-> Keep in mind that for symlinks to show up in the start menu on Windows 11, you will need to be using a start menu replacement tool like [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu) or [StartAllBack](https://www.startallback.com/)
-> 
-> For more information on symlinks, visit: [Symbolic Links - Win32 apps | Microsoft Learn](https://learn.microsoft.com/en-us/windows/win32/fileio/symbolic-links)
+
+
+## Information
+
+This script uses the `MKLINK` command, which requires administrative privileges. If you encounter issues, please check the paths and permissions.
+If you want to use this to organize your start menu, you will need a start menu replacement tool.
+
+Start Menu replacement tools that are knwown tp support symlinks: [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu) - [StartAllBack](https://www.startallback.com/) - [StartIsBack](https://www.startisback.com/)
+
+For more information on symlinks, visit: [Symbolic Links - Win32 apps | Microsoft Learn](https://learn.microsoft.com/en-us/windows/win32/fileio/symbolic-links)
 
 **Download**: [ZIP](https://github.com/The-Back-Room/SymLink-Creator/archive/refs/heads/main.zip)
 
