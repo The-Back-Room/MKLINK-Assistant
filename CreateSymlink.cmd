@@ -26,13 +26,13 @@
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 NET SESSION >NUL 2>&1
 IF %ERRORLEVEL% NEQ 0 (
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	:: Exit the script with an error code indicating administrative privileges are required.                                            ::
-	:: This will prevent the script from proceeding further without the necessary permissions.                                          ::
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	:: Exit the script with an error code indicating administrative privileges are required.                                        ::
+	:: This will prevent the script from proceeding further without the necessary permissions.                                      ::
+	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	CLS
-	MODE CON COLS=85 LINES=45
-	COLOR 4F
+	MODE CON COLS=85 LINES=30
+	COLOR 04
 	TITLE Administrative Privileges Required
 	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	ECHO ::                         Administrative Privileges Required                      ::
@@ -57,8 +57,8 @@ IF %ERRORLEVEL% NEQ 0 (
 :: The script will display a welcome message and instructions for the user.                                                         ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 CLS
-MODE CON COLS=85 LINES=45
-COLOR 1F
+MODE CON COLS=85 LINES=30
+COLOR 09
 TITLE Symlink Creator
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO ::                                  Symlink Creator                                ::
@@ -85,8 +85,8 @@ PAUSE >NUL
 :: The script will validate the input and proceed to create the symlink if valid.                                                   ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 CLS
-MODE CON COLS=85 LINES=45
-COLOR 1F
+MODE CON COLS=85 LINES=30
+COLOR 09
 TITLE Symlink Creator - Input Required
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO ::                                  Symlink Creator                                ::
@@ -110,8 +110,8 @@ SET /P "INPUT=What folder do you want to link to (full path):"
 :: to re-enter the paths. If the paths are valid, proceed to confirm the details.                                                   ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 CLS
-MODE CON COLS=85 LINES=45
-COLOR 1F
+MODE CON COLS=85 LINES=30
+COLOR 09
 TITLE Symlink Creator
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO ::                                  Symlink Creator                                ::
@@ -141,8 +141,8 @@ PAUSE >NUL
 :: The script will display a message indicating the symlink creation process is underway.                                           ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 CLS
-MODE CON COLS=85 LINES=45
-COLOR 1F
+MODE CON COLS=85 LINES=30
+COLOR 09
 TITLE Creating Symlink...
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO ::                                Creating Symlink                                 ::
@@ -162,8 +162,8 @@ MKLINK /D "%OUTPUT%" "%INPUT%"
 :: If successful, display a success message; otherwise, display an error message.                                                   ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 CLS
-MODE CON COLS=85 LINES=45
-COLOR 1F
+MODE CON COLS=85 LINES=30
+COLOR 09
 TITLE Symlink Creation Result
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO ::                               Symlink Creation Result                           ::
@@ -175,13 +175,13 @@ ECHO Please wait while we verify the operation...
 ECHO This may take a few moments depending on the paths provided.
 TIMEOUT /T 2 >NUL
 IF %ERRORLEVEL% EQU 0 (
-	:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	:: Clear the screen and display a success message indicating the symlink was created successfully.                             ::
-	:: The script will also display the output and input paths for confirmation.                                                   ::
-	:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	:: Clear the screen and display a success message indicating the symlink was created successfully.                              ::
+	:: The script will also display the output and input paths for confirmation.                                                    ::
+	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	CLS
-	MODE CON COLS=85 LINES=45
-	COLOR 2F
+	MODE CON COLS=85 LINES=30
+	COLOR 02
 	TITLE Symlink Creation Successful
 	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	ECHO ::                            Symlink Created Successfully                         ::
@@ -204,13 +204,13 @@ IF %ERRORLEVEL% EQU 0 (
 	TIMEOUT /T 10 >NUL
 	EXIT /B 0
 ) ELSE IF %ERRORLEVEL% EQU 1 (
-	:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	:: Clear the screen and display an error message indicating the symlink creation failed.                                       ::
-	:: The script will provide troubleshooting steps for the user to resolve the issue.                                            ::
-	:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	:: Clear the screen and display an error message indicating the symlink creation failed.                                        ::
+	:: The script will provide troubleshooting steps for the user to resolve the issue.                                             ::
+	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	CLS
-	MODE CON COLS=85 LINES=45
-	COLOR 4F
+	MODE CON COLS=85 LINES=30
+	COLOR 04
 	TITLE Symlink Creation Failed
 	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	ECHO ::                               Symlink Creation Failed                           ::
