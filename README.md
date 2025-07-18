@@ -28,20 +28,20 @@ For more information on symlinks, visit: [Symbolic Links - Win32 apps | Microsof
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: This script is designed to create a symbolic link in Windows.                                                                    ::
 :: Ensure you run this script with administrative privileges.                                                                       ::
-::                                                                                                                                  ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
 :: The script will prompt for the output path and the input folder to link to.                                                      ::
 :: It will handle errors and provide feedback on the success or failure of the operation.                                           ::
-::                                                                                                                                  ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
 :: Note: This script uses the MKLINK command, which requires administrative privileges.                                             ::
 :: Ensure you have the necessary permissions to create symlinks on your system.                                                     ::
-::                                                                                                                                  ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
 :: For more information on symlinks, visit: https://docs.microsoft.com/en-us/windows/win32/fileio/symbolic-links                    ::
-::                                                                                                                                  ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
 :: This script is provided as-is without any warranty. Use at your own risk.                                                        ::
 :: If you encounter issues, please check the paths and permissions.                                                                 ::
-::                                                                                                                                  ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
 :: For further assistance, refer to the official Microsoft documentation or community forums.                                       ::
-::                                                                                                                                  ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
 :: This script is intended for educational purposes and to assist users in creating symlinks easily.                                ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -52,9 +52,30 @@ For more information on symlinks, visit: [Symbolic Links - Win32 apps | Microsof
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 NET SESSION >NUL 2>&1
 IF %ERRORLEVEL% NEQ 0 (
+	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	:: Exit the script with an error code indicating administrative privileges are required.                                            ::
+	:: This will prevent the script from proceeding further without the necessary permissions.                                          ::
+	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	CLS
+	MODE CON COLS=85 LINES=45
+	COLOR 4F
+	TITLE Administrative Privileges Required
+	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	ECHO ::                         Administrative Privileges Required                      ::
+	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	ECHO.
 	ECHO This script requires administrative privileges to run.
-	ECHO Please run this script as an administrator.
-	PAUSE
+	ECHO Please right-click on this script and select "Run as administrator".
+	ECHO Alternatively, you can open a command prompt as administrator and run this script from there.
+	ECHO.
+	ECHO If you continue to have issues, please refer to the official documentation or community forums for assistance.
+	ECHO.
+	ECHO For more information on running scripts with administrative privileges, visit:
+	ECHO - https://docs.microsoft.com/en-us/windows/win32/shell/command-prompt-administrator
+	ECHO - https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dive/administrative-tasks
+	ECHO.
+	ECHO Press any key to exit...
+	PAUSE >NUL
 	EXIT /B 1
 )
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -180,13 +201,13 @@ ECHO Please wait while we verify the operation...
 ECHO This may take a few moments depending on the paths provided.
 TIMEOUT /T 2 >NUL
 IF %ERRORLEVEL% EQU 0 (
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	:: Clear the screen and display a success message indicating the symlink was created successfully.                                  ::
-	:: The script will also display the output and input paths for confirmation.                                                        ::
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	:: Clear the screen and display a success message indicating the symlink was created successfully.                             ::
+	:: The script will also display the output and input paths for confirmation.                                                   ::
+	:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	CLS
 	MODE CON COLS=85 LINES=45
-	COLOR 1F
+	COLOR 2F
 	TITLE Symlink Creation Successful
 	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	ECHO ::                            Symlink Created Successfully                         ::
@@ -209,10 +230,10 @@ IF %ERRORLEVEL% EQU 0 (
 	TIMEOUT /T 10 >NUL
 	EXIT /B 0
 ) ELSE IF %ERRORLEVEL% EQU 1 (
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	:: Clear the screen and display an error message indicating the symlink creation failed.                                            ::
-	:: The script will provide troubleshooting steps for the user to resolve the issue.                                                 ::
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	:: Clear the screen and display an error message indicating the symlink creation failed.                                       ::
+	:: The script will provide troubleshooting steps for the user to resolve the issue.                                            ::
+	:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	CLS
 	MODE CON COLS=85 LINES=45
 	COLOR 4F
