@@ -26,23 +26,24 @@ For more information on MKLINK, please refer to: [MKLINK - Windows Server | Micr
 ```cmd
 @ECHO OFF
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: This script is designed to create a symbolic link in Windows.                                                                    ::
+:: This script is designed to automathe the MKLINK command in Windows.                                                              ::
 :: Ensure you run this script with administrative privileges.                                                                       ::
 :: -------------------------------------------------------------------------------------------------------------------------------- ::
-:: The script will prompt for the output path and the input folder to link to.                                                      ::
+:: The script will prompt for the taget path and link path.                                                                         ::
 :: It will handle errors and provide feedback on the success or failure of the operation.                                           ::
 :: -------------------------------------------------------------------------------------------------------------------------------- ::
 :: Note: This script uses the MKLINK command, which requires administrative privileges.                                             ::
-:: Ensure you have the necessary permissions to create symlinks on your system.                                                     ::
+:: Ensure you have the necessary permissions to use the MKLINK command on your system.                                              ::
 :: -------------------------------------------------------------------------------------------------------------------------------- ::
-:: For more information on symlinks, visit: https://docs.microsoft.com/en-us/windows/win32/fileio/symbolic-links                    ::
+:: For more information on MKLINK, please refer to:                                                                                 ::
+:: - https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mklink                                        ::
 :: -------------------------------------------------------------------------------------------------------------------------------- ::
 :: This script is provided as-is without any warranty. Use at your own risk.                                                        ::
 :: If you encounter issues, please check the paths and permissions.                                                                 ::
 :: -------------------------------------------------------------------------------------------------------------------------------- ::
 :: For further assistance, refer to the official Microsoft documentation or community forums.                                       ::
 :: -------------------------------------------------------------------------------------------------------------------------------- ::
-:: This script is intended for educational purposes and to assist users in creating symlinks easily.                                ::
+:: This script is intended for educational purposes and to assist users in using the MKLINK command easily.                         ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -52,10 +53,6 @@ For more information on MKLINK, please refer to: [MKLINK - Windows Server | Micr
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 NET SESSION >NUL 2>&1
 IF %ERRORLEVEL% NEQ 0 (
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	:: Exit the script with an error code indicating administrative privileges are required.                                        ::
-	:: This will prevent the script from proceeding further without the necessary permissions.                                      ::
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	CLS
 	MODE CON COLS=85 LINES=30
 	COLOR 04
@@ -79,179 +76,177 @@ IF %ERRORLEVEL% NEQ 0 (
 	EXIT /B 1
 )
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Clear the screen and set up the console for the symlink creation process.                                                        ::
-:: The script will display a welcome message and instructions for the user.                                                         ::
+:: Clear the screen and set up the console for the MKLINK Assistant script.
+:: This section initializes the console appearance and provides a welcome message.                                                  ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 CLS
 MODE CON COLS=85 LINES=30
 COLOR 09
-TITLE Symlink Creator
+TITLE MKLINK Assistant
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO ::                                  Symlink Creator                                ::
+ECHO ::                                MKLINK Assistant                                 ::
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO.
-ECHO Welcome to the Symlink Creator!
-ECHO This script will help you create a symbolic link (symlink) for a folder.
-ECHO A symlink allows you to access a folder from a different location in the file system
-ECHO without duplicating the contents of the folder.
+ECHO Welcome to the MKLINK Assistant!
+ECHO This script will help you create Symbolic Links, Hard Links, or Directory Junctions.
 ECHO.
-ECHO Please follow the prompts to specify the output path for the symlink and the input
-ECHO folder you want to link to.
+ECHO Please ensure you have the necessary permissions to create links in the specified directories.
+ECHO If you encounter any issues, please refer to the official documentation or community forums for assistance.
 ECHO.
-ECHO Note: Ensure you have the necessary permissions to create symlinks on your system.
-ECHO If you encounter any issues, please check the paths and permissions.
-ECHO.
-ECHO For more information on symlinks, visit:
+ECHO For more information on MKLINK, visit:
+ECHO - https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/mklink
 ECHO - https://docs.microsoft.com/en-us/windows/win32/fileio/symbolic-links
+ECHO - https://docs.microsoft.com/en-us/windows/win32/fileio/hard-links
+ECHO - https://docs.microsoft.com/en-us/windows/win32/fileio/directory-JUNCTIONs
 ECHO.
 ECHO Press any key to continue...
 PAUSE >NUL
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Clear the screen and prompt the user for input paths for the symlink creation.                                                   ::
-:: The script will validate the input and proceed to create the symlink if valid.                                                   ::
+:: Main menu for selecting the type of link to create.                                                                              ::
+:: This section prompts the user to choose between Symbolic Link, Hard Link, Directory Junction,                                    ::
+:: or Exit the script. It sets the type of link based on the user's choice.                                                         ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 CLS
 MODE CON COLS=85 LINES=30
 COLOR 09
-TITLE Symlink Creator - Input Required
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO ::                                  Symlink Creator                                ::
-ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO.
-ECHO Please enter the details for creating the symlink.
-ECHO.
-ECHO You will need to provide:
-ECHO - The full path where you want to create the symlink (output path).
-ECHO - The full path of the folder you want to link to (input folder).
-ECHO.
-ECHO Make sure the output path does not already exist, and the input folder exists and is 
-ECHO accessible.
-ECHO.
-ECHO Press any key to continue...
-PAUSE >NUL
-SET /P "OUTPUT=Where do you want to create the symlink (full path):"
-SET /P "INPUT=What folder do you want to link to (full path):"
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Validate the input paths provided by the user. If the paths are empty, prompt the user                                           ::
-:: to re-enter the paths. If the paths are valid, proceed to confirm the details.                                                   ::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-CLS
-MODE CON COLS=85 LINES=30
-COLOR 09
-TITLE Symlink Creator
-ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO ::                                  Symlink Creator                                ::
+ECHO ::                                MKLINK Assistant                                 ::
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO.
-ECHO This script will create a symbolic link (symlink) for the specified folder.
+ECHO Please choose the type of link you want to create:
+
+ECHO 1. Symbolic Link (SYMLINK)
+ECHO 2. Hard Link
+ECHO 3. Directory Junction
+ECHO 4. Exit
 ECHO.
-ECHO Please ensure you have the necessary permissions to create symlinks on your
-ECHO system. If you encounter any issues, please check the paths and permissions.
-ECHO.
-ECHO For more information on symlinks, visit:
-ECHO - https://docs.microsoft.com/en-us/windows/win32/fileio/symbolic-links
-ECHO.
-ECHO You have entered the following details:
-ECHO.
-ECHO Output Path:
-ECHO - %OUTPUT%
-ECHO.
-ECHO Input Folder:
-ECHO - %INPUT%
-ECHO.
-ECHO Press any key to confirm the details and proceed with creating the symlink.
-ECHO If you need to change the paths, you can exit now and run the script again.
-PAUSE >NUL
+SET /P CHOICE=Enter your choice (1-4):
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Clear the screen and create the symlink using the MKLINK command.                                                                ::
-:: The script will display a message indicating the symlink creation process is underway.                                           ::
+:: Validate the user's choice and set the link type accordingly. If the choice is invalid, it will redirect to the error section.   ::
+:: This section ensures that the user selects a valid option before proceeding with the link creation process.                      ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-CLS
-MODE CON COLS=85 LINES=30
-COLOR 09
-TITLE Creating Symlink...
-ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO ::                                Creating Symlink                                 ::
-ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO.
-ECHO Creating the symlink at "%OUTPUT%" pointing to "%INPUT%"...
-ECHO.
-ECHO Please wait while we create the symlink.
-ECHO This may take a few moments depending on the paths provided.
-TIMEOUT /T 2 >NUL
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Execute the MKLINK command to create the symlink. The command will create a directory symlink if the input is a folder.          ::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-MKLINK /D "%OUTPUT%" "%INPUT%"
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Check the ERRORLEVEL to determine if the MKLINK command was successful.                                                          ::
-:: If successful, display a success message; otherwise, display an error message.                                                   ::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-CLS
-MODE CON COLS=85 LINES=30
-COLOR 09
-TITLE Symlink Creation Result
-ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO ::                               Symlink Creation Result                           ::
-ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO.
-ECHO Checking the result of the symlink creation...
-ECHO.
-ECHO Please wait while we verify the operation...
-ECHO This may take a few moments depending on the paths provided.
-TIMEOUT /T 2 >NUL
-IF %ERRORLEVEL% EQU 0 (
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	:: Clear the screen and display a success message indicating the symlink was created successfully.                              ::
-	:: The script will also display the output and input paths for confirmation.                                                    ::
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	CLS
-	MODE CON COLS=85 LINES=30
-	COLOR 02
-	TITLE Symlink Creation Successful
-	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	ECHO ::                            Symlink Created Successfully                         ::
-	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	ECHO.
-	ECHO The symlink has been created successfully!
-	ECHO.
-	ECHO You can now access the folder at:
-	ECHO - "%OUTPUT%"
-	ECHO.
-	ECHO The symlink points to the folder:
-	ECHO - "%INPUT%"
-	ECHO.
-	ECHO If you need to create another symlink, you can run this script again.
-	ECHO.
-	ECHO For more information on symlinks, visit:
-	ECHO - https://docs.microsoft.com/en-us/windows/win32/fileio/symbolic-links
-	ECHO.
-	ECHO Thank you for using the Symlink Creator!
-	TIMEOUT /T 10 >NUL
-	EXIT /B 0
-) ELSE IF %ERRORLEVEL% EQU 1 (
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	:: Clear the screen and display an error message indicating the symlink creation failed.                                        ::
-	:: The script will provide troubleshooting steps for the user to resolve the issue.                                             ::
-	::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	CLS
-	MODE CON COLS=85 LINES=30
-	COLOR 04
-	TITLE Symlink Creation Failed
-	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	ECHO ::                               Symlink Creation Failed                           ::
-	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	ECHO.
-	ECHO An error occurred while trying to create the symlink.
-	ECHO.
-	ECHO Please check the following:
-	ECHO - Ensure the specified output path does not already exist.
-	ECHO - Ensure the specified input path exists and is accessible.
-	ECHO - Ensure you have administrative privileges to create symlinks.
-	ECHO.
-	TIMEOUT /T 10 >NUL
-	EXIT /B	1
+IF "%CHOICE%"=="1" (
+    SET TYPE=SYMLINK
+) ELSE IF "%CHOICE%"=="2" (
+    SET TYPE=HARDLINK
+) ELSE IF "%CHOICE%"=="3" (
+    SET TYPE=JUNCTION
+) ELSE IF "%CHOICE%"=="4" (
+    EXIT /B 0
+) ELSE (
+    GOTO ERROR
 )
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Prompt the user for the target path and link path. This section collects the necessary paths from the user.                      ::
+:: This section collects the necessary paths from the user to create the link. It checks if the paths are valid and accessible.     ::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+CLS
+MODE CON COLS=85 LINES=30
+COLOR 09
+ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ECHO ::                                MKLINK Assistant                                 ::
+ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ECHO.
+ECHO You have chosen to create a %TYPE%.
+ECHO Please provide the necessary paths below.
+ECHO.
+ECHO The target path is the file or directory you want to link to.
+ECHO The link path is the name of the link you want to create.
+ECHO.
+ECHO Ensure that the target path exists and you have the necessary permissions to create links in the specified directories.
+ECHO.
+ECHO For more information on the types of links, please refer to the official documentation:
+ECHO - Symbolic Links: https://docs.microsoft.com/en-us/windows/win32/fileio/symbolic-links
+ECHO - Hard Links: https://docs.microsoft.com/en-us/windows/win32/fileio/hard-links
+ECHO - Directory Junctions: https://docs.microsoft.com/en-us/windows/win32/fileio/directory-JUNCTIONs
+ECHO.
+
+SET /P TARGETPATH=Enter the target path (the file or directory you want to link to):
+SET /P LINKPATH=Enter the path of the link (the link you want to create):
+
+IF "%TYPE%"=="SYMLINK" (
+    MKLINK /D "%LINKPATH%" "%TARGETPATH%"
+) ELSE IF "%TYPE%"=="HARDLINK" (
+    MKLINK /H "%LINKPATH%" "%TARGETPATH%"
+) ELSE IF "%TYPE%"=="JUNCTION" (
+   MKLINK /J "%LINKPATH%" "%TARGETPATH%"
+) ELSE (
+    GOTO ERROR
+)
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Check the error level after attempting to create the link. If the command was successful, it will redirect to the success section.  ::
+:: If there was an error, it will redirect to the error section with appropriate messages.                                             ::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+CLS
+MODE CON COLS=85 LINES=30
+COLOR 09
+ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ECHO ::                                MKLINK Assistant                                 ::
+ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ECHO.
+
+IF %ERRORLEVEL% EQU 0 (
+    GOTO SUCCESS
+) ELSE (
+    GOTO ERROR
+)
+
+:ERROR
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Error handling section. This section provides feedback to the user if an error occurs during the link creation process.             ::
+:: It suggests possible reasons for the error and provides links to official documentation for troubleshooting.                        ::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+CLS
+MODE CON COLS=85 LINES=30
+COLOR 04
+ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ECHO ::                                MKLINK Assistant                                 ::
+ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ECHO.
+ECHO MKLINK Assistant has encountered an error.
+ECHO.
+ECHO Please ensure that:
+ECHO - You have selected the correct type of link to create.
+ECHO - The target path exists and is accessible.
+ECHO - The link path does not already exist.
+ECHO - You have the necessary permissions to create links in the specified directories.
+ECHO - You are running this script with administrative privileges.
+ECHO - The paths are correctly formatted and do not contain invalid characters.
+ECHO - The target path is not a network path if creating a symbolic link (unless you have enabled the appropriate settings).
+ECHO - The link path is not a directory if creating a hard link.
+ECHO - The link path is not a file if creating a Directory Junction.
+ECHO - The link path is not a JUNCTION point if creating a symbolic link.
+ECHO - The link path is not a symbolic link if creating a hard link.
+ECHO - The link path is not a hard link if creating a Directory Junction.
+ECHO.
+ECHO Error Code: %ERRORLEVEL%
+ECHO.
+ECHO For more information on MKLINK, please refer to:
+ECHO - https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mklink
+ECHO.
+ECHO Press any key to exit...
+TIMEOUT /T 10 >NUL
+EXIT /B 1
+
+:SUCCESS
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Success section. This section provides feedback to the user if the link was created successfully.                                   ::
+:: It displays the link path and target path, and allows the user to exit the script.                                                  ::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+CLS
+MODE CON COLS=85 LINES=30
+COLOR 09
+ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ECHO ::                                MKLINK Assistant                                 ::
+ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ECHO.
+ECHO The %TYPE% has been created successfully!
+ECHO Link Path: %LINKPATH%
+ECHO Target Path: %TARGETPATH%
+ECHO.
+ECHO Press any key to exit...
+TIMEOUT /T 10 >NUL
+EXIT /B 0
 ```
 
 </details>
