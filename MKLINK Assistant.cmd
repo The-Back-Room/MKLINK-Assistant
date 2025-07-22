@@ -9,7 +9,8 @@
 :: Note: This script uses the MKLINK command, which requires administrative privileges.                                             ::
 :: Ensure you have the necessary permissions to use the MKLINK command on your system.                                              ::
 :: -------------------------------------------------------------------------------------------------------------------------------- ::
-:: For more information on MKLINK, visit: https://docs.microsoft.com/en-us/windows/win32/fileio/mklink                              ::
+:: For more information on MKLINK, please refer to:                                                                                 ::
+:: - https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mklink                                        ::
 :: -------------------------------------------------------------------------------------------------------------------------------- ::
 :: This script is provided as-is without any warranty. Use at your own risk.                                                        ::
 :: If you encounter issues, please check the paths and permissions.                                                                 ::
@@ -196,9 +197,8 @@ ECHO - The link path is not a hard link if creating a Directory Junction.
 ECHO.
 ECHO Error Code: %ERRORLEVEL%
 ECHO.
-ECHO For more information on troubleshooting MKLINK issues, please refer to:
-ECHO - https://docs.microsoft.com/en-us/windows/win32/fileio/mklink
-ECHO - https://docs.microsoft.com/en-us/windows/win32/fileio/troubleshooting-mklink
+ECHO For more information on MKLINK, please refer to:
+ECHO - https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mklink
 ECHO.
 ECHO Press any key to exit...
 TIMEOUT /T 10 >NUL
