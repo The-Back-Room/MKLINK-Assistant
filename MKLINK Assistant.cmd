@@ -1,5 +1,30 @@
 @ECHO OFF
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: This script is designed to automathe the MKLINK command in Windows.                                                              ::
+:: Ensure you run this script with administrative privileges.                                                                       ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
+:: The script will prompt for the taget path and link path.                                                                         ::
+:: It will handle errors and provide feedback on the success or failure of the operation.                                           ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
+:: Note: This script uses the MKLINK command, which requires administrative privileges.                                             ::
+:: Ensure you have the necessary permissions to use the MKLINK command on your system.                                              ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
+:: For more information on MKLINK, please refer to:                                                                                 ::
+:: - https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mklink                                        ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
+:: This script is provided as-is without any warranty. Use at your own risk.                                                        ::
+:: If you encounter issues, please check the paths and permissions.                                                                 ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
+:: For further assistance, refer to the official Microsoft documentation or community forums.                                       ::
+:: -------------------------------------------------------------------------------------------------------------------------------- ::
+:: This script is intended for educational purposes and to assist users in using the MKLINK command easily.                         ::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Check for administrative privileges before proceeding with the script.                                                           ::
+:: If the script is not run as administrator, prompt the user to run it with elevated privileges                                    ::
+:: and exit the script with an error code.                                                                                          ::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 NET SESSION >NUL 2>&1
 IF %ERRORLEVEL% NEQ 0 (
 	CLS
