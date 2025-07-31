@@ -11,9 +11,9 @@ Windows CMD script to simplify making SymLinks
 
 This script uses the `MKLINK` command, which requires administrative privileges. If you encounter issues, please check the paths and permissions.
 
-For more information on MKLINK, please refer to: [`MKLINK - Windows Server | Microsoft Learn`](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/mklink)
+For more information on MKLINK, please refer to: [`MKLINK - Windows Server | Microsoft Learn`][MKLINK - Windows Server | Microsoft Learn]
 
-**Download**: [`ZIP`][ZIP] [`RAW`][RAW]
+**Download**: [`ZIP`][ZIP]
 
-[RAW]: https://raw.githubusercontent.com/The-Back-Room/MKLINK-Assistant/refs/heads/main/MKLINK%20Assistant.cmd
 [ZIP]: https://github.com/The-Back-Room/MKLINK-Assistant/archive/refs/heads/main.zip
+[MKLINK - Windows Server | Microsoft Learn]: https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/mklink
