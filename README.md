@@ -15,5 +15,5 @@ For more information on MKLINK, please refer to: [`MKLINK - Windows Server | Mic
 
 **Download**: [`ZIP`][ZIP] [`RAW`][RAW]
 
-[RAW]: /MKLINK%20Assistant.cmd
+[RAW]: https://raw.githubusercontent.com/The-Back-Room/MKLINK-Assistant/refs/heads/main/MKLINK%20Assistant.cmd
 [ZIP]: https://github.com/The-Back-Room/MKLINK-Assistant/archive/refs/heads/main.zip
