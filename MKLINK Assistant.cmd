@@ -147,12 +147,6 @@ ECHO - The link path does not already exist.
 ECHO - You have the necessary permissions to create links in the specified directories.
 ECHO - You are running this script with administrative privileges.
 ECHO - The paths are correctly formatted and do not contain invalid characters.
-ECHO - The target path is not a network path if creating a symbolic link (unless you have enabled the appropriate settings).
-ECHO - The link path is not a directory if creating a hard link.
-ECHO - The link path is not a file if creating a Directory Junction.
-ECHO - The link path is not a JUNCTION point if creating a symbolic link.
-ECHO - The link path is not a symbolic link if creating a hard link.
-ECHO - The link path is not a hard link if creating a Directory Junction.
 ECHO.
 ECHO Error Code: %ERRORLEVEL%
 ECHO.
