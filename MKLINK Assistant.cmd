@@ -63,7 +63,7 @@ ECHO For more information on MKLINK, visit:
 ECHO - https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/mklink
 ECHO - https://docs.microsoft.com/en-us/windows/win32/fileio/symbolic-links
 ECHO - https://docs.microsoft.com/en-us/windows/win32/fileio/hard-links
-ECHO - https://docs.microsoft.com/en-us/windows/win32/fileio/directory-JUNCTIONs
+ECHO - https://docs.microsoft.com/en-us/windows/win32/fileio/directory-junctions
 ECHO.
 ECHO Press any key to continue...
 PAUSE >NUL
@@ -114,7 +114,7 @@ ECHO.
 ECHO For more information on the types of links, please refer to the official documentation:
 ECHO - Symbolic Links: https://docs.microsoft.com/en-us/windows/win32/fileio/symbolic-links
 ECHO - Hard Links: https://docs.microsoft.com/en-us/windows/win32/fileio/hard-links
-ECHO - Directory Junctions: https://docs.microsoft.com/en-us/windows/win32/fileio/directory-JUNCTIONs
+ECHO - Directory Junctions: https://docs.microsoft.com/en-us/windows/win32/fileio/directory-junctions
 ECHO.
 
 SET /P TARGETPATH=Enter the target path (the file or directory you want to link to):
