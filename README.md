@@ -46,11 +46,6 @@ For more information on MKLINK, please refer to: [MKLINK - Windows Server | Micr
 :: This script is intended for educational purposes and to assist users in using the MKLINK command easily.                         ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Check for administrative privileges before proceeding with the script.                                                           ::
-:: If the script is not run as administrator, prompt the user to run it with elevated privileges                                    ::
-:: and exit the script with an error code.                                                                                          ::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 NET SESSION >NUL 2>&1
 IF %ERRORLEVEL% NEQ 0 (
 	CLS
