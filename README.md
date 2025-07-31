@@ -13,7 +13,7 @@ This script uses the `MKLINK` command, which requires administrative privileges.
 
 For more information on MKLINK, please refer to: [MKLINK - Windows Server | Microsoft Learn](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/mklink)
 
-**Download**: [ZIP](https://github.com/The-Back-Room/SymLink-Creator/archive/refs/heads/main.zip)
+**Download**: [`ZIP`](https://github.com/The-Back-Room/SymLink-Creator/archive/refs/heads/main.zip) [`RAW`](https://raw.githubusercontent.com/The-Back-Room/MKLINK-Assistant/refs/heads/main/MKLINK%20Assistant.cmd)
 
 ---
 
