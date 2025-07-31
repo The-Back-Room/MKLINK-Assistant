@@ -10,9 +10,6 @@ Windows CMD script to simplify making SymLinks
 ## Information
 
 This script uses the `MKLINK` command, which requires administrative privileges. If you encounter issues, please check the paths and permissions.
-If you want to use this to organize your start menu, you will need a start menu replacement tool.
-
-Start Menu replacement tools that are knwown tp support symlinks: [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu) - [StartAllBack](https://www.startallback.com/) - [StartIsBack](https://www.startisback.com/)
 
 For more information on MKLINK, please refer to: [MKLINK - Windows Server | Microsoft Learn](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/mklink)
 
