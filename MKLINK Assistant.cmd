@@ -24,7 +24,7 @@ NET SESSION >NUL 2>&1
 IF %ERRORLEVEL% NEQ 0 (
 	CLS
 	MODE CON COLS=85 LINES=30
-	COLOR 4F
+	COLOR 47
 	TITLE Administrative Privileges Required
 	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	ECHO ::                         Administrative Privileges Required                      ::
@@ -47,7 +47,7 @@ IF %ERRORLEVEL% NEQ 0 (
 
 CLS
 MODE CON COLS=85 LINES=30
-COLOR 9F
+COLOR 97
 TITLE MKLINK Assistant
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO ::                                MKLINK Assistant                                 ::
@@ -70,7 +70,7 @@ PAUSE >NUL
 
 CLS
 MODE CON COLS=85 LINES=30
-COLOR 9F
+COLOR 97
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO ::                                MKLINK Assistant                                 ::
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -98,7 +98,7 @@ IF "%CHOICE%"=="1" (
 
 CLS
 MODE CON COLS=85 LINES=30
-COLOR 9F
+COLOR 97
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO ::                                MKLINK Assistant                                 ::
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -138,7 +138,7 @@ IF "%TYPE%"=="SYMLINK" (
 
 CLS
 MODE CON COLS=85 LINES=30
-COLOR 9F
+COLOR 97
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO ::                                MKLINK Assistant                                 ::
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -153,7 +153,7 @@ IF %ERRORLEVEL% EQU 0 (
 :ERROR
 CLS
 MODE CON COLS=85 LINES=30
-COLOR 4F
+COLOR 47
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO ::                                MKLINK Assistant                                 ::
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -181,7 +181,7 @@ EXIT /B 1
 :SUCCESS
 CLS
 MODE CON COLS=85 LINES=30
-COLOR 2F
+COLOR 27
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO ::                                MKLINK Assistant                                 ::
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
