@@ -20,31 +20,6 @@
 :: This script is intended for educational purposes and to assist users in using the MKLINK command easily.                         ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-NET SESSION >NUL 2>&1
-IF %ERRORLEVEL% NEQ 0 (
-	CLS
-	MODE CON COLS=85 LINES=30
-	COLOR 47
-	TITLE Administrative Privileges Required
-	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	ECHO ::                         Administrative Privileges Required                      ::
-	ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	ECHO.
-	ECHO This script requires administrative privileges to run.
-	ECHO Please right-click on this script and select "Run as administrator".
-	ECHO Alternatively, you can open a command prompt as administrator and run this script from there.
-	ECHO.
-	ECHO If you continue to have issues, please refer to the official documentation or community forums for assistance.
-	ECHO.
-	ECHO For more information on running scripts with administrative privileges, visit:
-	ECHO - https://docs.microsoft.com/en-us/windows/win32/shell/command-prompt-administrator
-	ECHO - https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dive/administrative-tasks
-	ECHO.
-	ECHO Press any key to exit...
-	PAUSE >NUL
-	EXIT /B 1
-)
-
 CLS
 MODE CON COLS=85 LINES=30
 COLOR 97
